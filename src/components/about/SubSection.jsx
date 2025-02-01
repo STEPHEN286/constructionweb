@@ -1,10 +1,10 @@
 export default function SubSection() {
   return (
-    <div className="bg-gray-200">
+    <div className="bg-[#f1f1f1]">
       <div className=" py-12 bg-[#f1f1f1] grid grid-cols-1 md:grid-cols-2 md:h-[400px] gap-10 md:gap-90 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="z-10 w-full" > 
           <small className=" text-center bg-amber-400">What We Do</small>
-          <h2 className="font-bold textheh-1xl mt-4 ">
+          <h2 className="font-bold text-1xl mt-4 ">
             We Offer Smarter & More Affordable Access To Construction Services
             and Equipment. We Are Ted-Nomex
           </h2>

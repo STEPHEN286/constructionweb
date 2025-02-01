@@ -1,118 +1,106 @@
 import { useState } from "react";
-import slider1 from "../../assets/img/Home1.jpg";
-import slider2 from "../../assets/img/Home3.jpg";
-import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-} from "@heroicons/react/20/solid";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { NextArrow, PrevArrow } from "../ui/Arrows";
+
+
+import slider1 from "../../assets/img/Home1.jpg"; 
+import slider2 from "../../assets/img/pexels-pixabay-159358.jpg"; // Ensure the path is correct
+import slider3 from "../../assets/img/pexels-willbillurban-30449440.jpg";
+import slider4 from "../../assets/img/pexels-quang-nguyen-vinh-222549-2138126.jpg";
 export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const slides = [
-    {
-      image: slider1,
-      title: "First Slide",
-      subTitile: "Architecture Project" ,
-      description: "This is the description for the first slide.",
-      buttonText: "Learn More",
-      buttonLink: "#",
-    },
-    {
-      image: slider2,
-      title: "Second Slide",
-      description: "This is the description for the second slide.",
-      buttonText: "Explore",
-      buttonLink: "#",
-    },
-    // Add more slides here if needed
-  ];
 
-  const handlePrev = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    );
-  };
+   const slides = [
+      {
+        image: slider1, 
+        title: "Modern Residential Construction",
+        description: "Building dream homes with cutting-edge design and sustainable materials.",
+        buttonLink: "/residential-construction",
+        buttonText: "View Projects",
+      },
+      {
+        image: slider2,
+        title: "Commercial Building Solutions",
+        description: "Expertise in constructing state-of-the-art commercial spaces for businesses.",
+        buttonLink: "/commercial-construction",
+        buttonText: "Learn More",
+      },
+      {
+        image: slider3, 
+        title: "Infrastructure Development",
+        description: "Creating robust infrastructure to support growing communities.",
+        buttonLink: "/infrastructure-projects",
+        buttonText: "Explore Services",
+      },
+      {
+        image: slider4, 
+        title: "Renovation & Remodeling",
+        description: "Transforming existing spaces into modern, functional environments.",
+        buttonLink: "/renovation-services",
+        buttonText: "Get a Quote",
+      },
+    ];
+  
 
-  const handleNext = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+  // const handleIndicatorClick = (index) => {
+  //   setActiveIndex(index);
+  // };
 
-  const handleIndicatorClick = (index) => {
-    setActiveIndex(index);
+  const settings = {
+    dots: true,
+    infinite: true,
+    // autoplay: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (current, next) => setActiveIndex(next),
   };
 
   return (
-    <div
-      id="indicators-carousel"
-      className="relative w-full md:h-[500px] bg-amber-500 overflow-hidden"
-    >
-      <div className="relative h-56 overflow-hidden md:h-full ">
+    <div className=" w-full h-[600px]  ">
+      <Slider {...settings} className="h-full w-full">
         {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`p-48  absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === activeIndex ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              backgroundImage: `url(${slide.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className=" text-white h-full flex justify-center items-start flex-col">
-              <h2 className="text-2xl z-40 font-bold">{slide.title}</h2>
-              <p className="mt-2 z-40">{slide.description}</p>
+          <div key={index} className="h-[600px] mx-auto  px-2  relative   sm:px-6 lg:px-8 ">
+            <div className="flex  mt-50 justify-center  z-40  items-start mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex-col p-8 text-white">
+              <h2 className="text-2xl z-20  font-bold">{slide.title}</h2>
+              <p className="mt-2 text-lg z-20">{slide.subTitle}</p>
+              <p className=" z-20 mt-2">{slide.description}</p>
               <a
                 href={slide.buttonLink}
-                className="mt-4  z-40 inline-block px-4 py-2 bg-amber-400 rounded hover:bg-amber-300"
+                className="mt-4 z-20  px-4 py-2 bg-amber-400 rounded hover:bg-amber-300"
               >
                 {slide.buttonText}
               </a>
             </div>
-          </div>
-        ))}
-      </div>
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute bottom-1/2 transform translate-y-1/2 left-0 backdrop-blur-sm bg-black opacity-35 h-74 w-[800px]  z-10">
 
-      <div className="absolute z-30 flex space-x-3 h-10  bottom-4 left-300 transform ">
+            </div>
+          </div>
+          
+        ))}
+      </Slider>
+
+      {/* <div className="absolute bottom-4 right-0 transform -translate-x-20 space-x-2 text-white p-3 rounded-full cursor-pointer  hover:bg-gray-700 transition z-10">
         {slides.map((_, index) => (
           <button
             key={index}
-            type="button"
-            className={`w-3 h-3 rounded-full ${
-              index === activeIndex ? "bg-blue-500" : "bg-gray-300"
-            }`}
             onClick={() => handleIndicatorClick(index)}
-            aria-label={`Slide ${index + 1}`}
-          ></button>
+            className={`w-3 h-3 rounded-full ${
+              index === activeIndex ? "bg-amber-400" : "bg-gray-300"
+            }`}
+          />
         ))}
       </div>
-
-      <button
-        type="button"
-        className="absolute bottom-4 right-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none transform translate-x-1/2 -translate-y-0"
-        onClick={handleNext}
-        aria-label="Next"
-      >
-        <span className="inline-flex items-center justify-center w-10 h-10 text-amber-400 bg-white/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white">
-          <ChevronDoubleRightIcon />
-        </span>
-      </button>
-
-      <button
-        type="button"
-        className="absolute   bottom-4 left-1/2 z-30 flex items-center justify-center px-4 group focus:outline-none transform translate-x-1/2 -translate-y-0"
-        onClick={handlePrev}
-        aria-label="Previous"
-      >
-        <span className="inline-flex items-center justify-center w-10 h-10 text-amber-400 bg-white/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white ">
-          <ChevronDoubleLeftIcon />
-        </span>
-      </button>
-      <span className="h-72 w-[300px] absolute left-0 top-1/2 z-10 transform -translate-y-1/2  bg-black/30"> 
-
-      </span>
-    </div>
+    </div> */}</div>
   );
 }
