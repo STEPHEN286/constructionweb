@@ -1,9 +1,9 @@
 import { useState } from "react";
-import slider1 from "../../assets/img/Home1.jpg"; // Ensure the path is correct
-import slider2 from "../../assets/img/pexels-pixabay-159358.jpg"; // Ensure the path is correct
-import slider3 from "../../assets/img/pexels-willbillurban-30449440.jpg";
-import slider4 from "../../assets/img/pexels-quang-nguyen-vinh-222549-2138126.jpg";
- // Ensure the path is correct
+import slider1 from "../../assets/img/Home1.webp"; 
+
+import slider3 from "../../assets/img/pexels-willbillurban-30449440.webp";
+import slider4 from "../../assets/img/pexels-quang-nguyen-vinh-222549-2138126.webp";
+ 
 import Responsive from "../ui/Responsive";
 
 export default function Carousel() {
@@ -16,7 +16,7 @@ export default function Carousel() {
       buttonText: "View Projects",
     },
     {
-      image: slider2,
+      image: slider3,
       title: "Commercial Building Solutions",
       description: "Expertise in constructing state-of-the-art commercial spaces for businesses.",
       buttonLink: "/commercial-construction",

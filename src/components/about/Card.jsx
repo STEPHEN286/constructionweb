@@ -7,7 +7,7 @@ export default function Card() {
         <div className="absolute h-13 w-16 flex justify-center items-center bg-gray-300 inset-y-0 right-0">
             <p>01</p>
         </div>
-        <div className="space-y-4 mt-10 w-full"> 
+        <div className="space-y-4 mt-10 w-full px-4 md:p-0"> 
         <div className="w-10 h-fit flex flex-col items-center  justify-center ">
             <span><TbToolsOff className="text-4xl text-amber-400" /></span>
             <span className="w-full h-1 bg-amber-400 mt-3">
