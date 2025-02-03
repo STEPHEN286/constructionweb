@@ -7,6 +7,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import React from 'react';
+import CostCalc from './CostCalc';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
@@ -30,9 +31,9 @@ function classNames(...classes) {
 export default function Navbar() {
   return (
     <Disclosure as="nav" className="">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 md:overflow-hidden lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className=" inset-y-0 left-0 flex items-center sm:hidden">
+          <div className=" inset-y-0 left-0 flex items-center sm:hidden md:block lg:hidden">
             {/* Mobile menu button */}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
               <span className="sr-only">Open main menu</span>
@@ -44,8 +45,8 @@ export default function Navbar() {
             <div className="flex shrink-0 items-center">
               <h1 className="font-bold">Ted-Nomex</h1>
             </div>
-            <div className="hidden md:flex  items-center h-full">
-              <div className="flex space-x-4">
+            <div className=" md:flex  items-center h-full">
+              <div className="hidden lg:flex space-x-4">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -63,7 +64,6 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Icons Section */}
               <div className="flex w-fit h-full items-center justify-center">
                 {menus.map((item, index) => (
                   <a
@@ -75,17 +75,13 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="h-full flex items-center bg-amber-400 px-10">
-                <button className="border-0 bg-transparent text-sm font-medium">
-                  Cost Calculator
-                </button>
-              </div>
+            <div className='hidden md:block h-full'> <CostCalc /></div>
             </div>
           </div>
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
+      <DisclosurePanel className="sm:hidden md:block ">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
             <DisclosureButton
@@ -103,6 +99,7 @@ export default function Navbar() {
               {item.name}
             </DisclosureButton>
           ))}
+          <p className='md:hidden'><CostCalc /></p>
         </div>
       </DisclosurePanel>
     </Disclosure>

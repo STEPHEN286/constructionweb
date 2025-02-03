@@ -4,7 +4,7 @@ export default function ChoosenSection() {
   return (
     <div
       className="
-    w-full  grid grid-cols-1 gap-2 md:grid-cols-3 py-14 md:p-20  bg-[#f1f1f1] relative overflow-hidden"
+    w-full  grid grid-cols-1 gap-2 lg:grid-cols-3 py-14  md:px-6 lg:p-20  bg-[#f1f1f1] relative overflow-hidden"
     >
       <div className="z-10 col-span-1 px-6 md:p-0">
         <h1 className="font-bold text-3xl mb-4">Why Choose Us for Your Construction Needs?</h1>

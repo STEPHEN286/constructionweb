@@ -6,7 +6,7 @@ export default function RightCard() {
     <div className=' w-full h-full flex flex-col  relative '>
        
       <img src={about} alt={about} className='z-10' />
-   <p className='z-20 md:hidden'>   <MaterialCounters /></p>
+   <p className='z-20 lg:hidden'>   <MaterialCounters /></p>
     </div>
   )
 }
